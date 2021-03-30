@@ -9,4 +9,7 @@ Metrics/BlockLength:
     - Rakefile
 
 Layout/EndOfLine:
-   Enabled: False
+  Enabled: False
+
+Style/FrozenStringLiteralComment:
+  Enabled: false

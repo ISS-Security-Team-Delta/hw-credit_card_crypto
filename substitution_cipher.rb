@@ -1,4 +1,5 @@
 module SubstitutionCipher
+  # Caesar
   module Caesar
     # Encrypts document using key
     # Arguments:
@@ -11,6 +12,7 @@ module SubstitutionCipher
               .map { |i| (i.ord + key).chr }
               .join
     end
+
     # Decrypts String document using integer key
     # Arguments:
     #   document: String
@@ -24,6 +26,7 @@ module SubstitutionCipher
     end
   end
 
+  # Permutation
   module Permutation
     # Encrypts document using key
     # Arguments:
@@ -34,7 +37,7 @@ module SubstitutionCipher
       # TODO: encrypt string using a permutation cipher
       look_up_table = (0..127).to_a.shuffle(random: Random.new(key))
       document.to_s.chars
-              .map { |i| look_up_table[i.ord].chr}
+              .map { |i| look_up_table[i.ord].chr }
               .join
     end
 
@@ -47,7 +50,7 @@ module SubstitutionCipher
       # TODO: decrypt string using a permutation cipher
       look_up_table = (0..127).to_a.shuffle(random: Random.new(key))
       document.to_s.chars
-              .map { |i| look_up_table.index(i.ord).chr}
+              .map { |i| look_up_table.index(i.ord).chr }
               .join
     end
   end
