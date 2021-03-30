@@ -1,7 +1,7 @@
 require 'matrix'
 
+# double transposition cipher
 module DoubleTranspositionCipher
-
   def self.encrypt(document, key)
     # TODO: FILL THIS IN!
     ## Suggested steps for double transposition cipher
@@ -9,7 +9,8 @@ module DoubleTranspositionCipher
     # 1. find number of rows/cols such that matrix is almost square
     col_num_matrix = Math.sqrt(document.to_s.length).ceil
     # 2. break plaintext into evenly sized blocks
-    matrix = document.to_s.chars.each_slice(col_num_matrix).to_a.tap { |i| i.last.fill(' ', i.last.length, col_num_matrix - i.last.length) }
+    matrix = document.to_s.chars.each_slice(col_num_matrix)
+                     .to_a.tap { |i| i.last.fill(' ', i.last.length, col_num_matrix - i.last.length) }
 
     # 3. sort rows in predictibly random way using key as seed
     # 4. sort columns of each row in predictibly random way
