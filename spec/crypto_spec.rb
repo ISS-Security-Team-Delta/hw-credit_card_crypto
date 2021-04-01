@@ -3,6 +3,7 @@
 require_relative '../credit_card'
 require_relative '../substitution_cipher'
 require_relative '../double_trans_cipher'
+require_relative '../sk_cipher'
 require 'minitest/autorun'
 require 'yaml'
 
@@ -52,6 +53,19 @@ describe 'Test card info encryption' do
     it 'should decrypt cipher text back to card information' do
       enc = DoubleTranspositionCipher.encrypt(@cc, @key)
       dec = DoubleTranspositionCipher.decrypt(enc, @key)
+      _(dec).must_equal @cc.to_s
+      _(dec).wont_be_nil
+    end
+  end
+
+  describe 'Using modern symmetric cipher' do
+    key = ModernSymmetricCipher.generate_new_key
+    it 'should encrypt and decrypt card information' do
+      enc = ModernSymmetricCipher.encrypt(@cc.to_s, key)
+      _(enc).wont_equal @cc.to_s
+      _(enc).wont_be_nil
+
+      dec = ModernSymmetricCipher.decrypt(enc, key)
       _(dec).must_equal @cc.to_s
       _(dec).wont_be_nil
     end
