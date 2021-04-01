@@ -16,6 +16,7 @@ module SubstitutionCipher
     #   document: String
     #   key: Fixnum (integer)
     # Returns: String
+
     def self.decrypt(document, key)
       # TODO: decrypt string using caesar cipher
       document.to_s.chars
